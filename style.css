@@ -1,0 +1,23 @@
+h1{
+    color: blueviolet;
+    text-align: center;
+    line-height: 5em;
+    size: 50em;
+    
+}
+
+#emoji{
+    background-color: beige;
+    padding: 200px 50px 200px 50px
+}
+
+#cocktail{
+    background-color: chartreuse;
+    padding: 200px 50px 200px 50px
+}
+
+#description{
+    background-color: darkgray;
+    padding: 200px 50px 200px 50px
+
+}
