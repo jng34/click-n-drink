@@ -16,3 +16,12 @@ The API we will be using is: https://www.thecocktaildb.com/api.php
 
 Sincerely, 
 Ignacio, James, Yax 
+
+-------------------------------------------------------------------------------------------
+
+CORE DELIVERABLES
+
+-User will select from 5 emojis which are associated with specific moods.
+-Each emoji corresponds to a different spirit
+-When an emoji is 'clicked', then 5 cocktail selections of that spirit will appear 
+-User can 'mouseover' a specific one to display information, such as ingredients, etc.
