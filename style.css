@@ -1,23 +1,68 @@
-h1{
-    color: blueviolet;
+h1 {
+    color: rgb(28, 23, 34);
     text-align: center;
-    line-height: 5em;
-    size: 50em;
-    
+    line-height: 1em;
+    font: 150px Arial, sans-serif;
 }
 
-#emoji{
-    background-color: beige;
-    padding: 200px 50px 200px 50px
+h2 {
+    text-align: center;
+    font: 43px Arial;
 }
 
+
+#emoji img{
+    /* background-color: rgb(255, 255, 255); */
+    padding: 100px 30px 200px 30px;
+    margin: auto;
+    justify-content: center;
+    height: 200px;
+
+}
+
+#emoji {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
 #cocktail{
-    background-color: chartreuse;
-    padding: 200px 50px 200px 50px
-}
-
+    /* background-color: rgb(48, 54, 40); */
+    padding: 100px 50px 100px 50px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+#cocktail img {
+    display: inline-flex;
+    overflow: scroll;
+    height: 250px;
+    margin-right: 3rem;
+    width: fit-content;
+    cursor: pointer;
+  }
+#cocktail img:last-child {
+    margin-right: 0;
+  }
 #description{
-    background-color: darkgray;
-    padding: 200px 50px 200px 50px
+    /* background-color: rgb(48, 54, 40); */
+    padding: 100px 50px 100px 50px;
+    text-align: center;
+    display: center;
+    font: 35px Arial, sans-serif;
+  }
+#description img {
+    display: center;
+    height: 400px;
+  }
 
+.hidden {
+    visibility: hidden;
 }
+
+.align {
+    display: inline-block;
+    /* background-color: rgb(48, 54, 40); */
+}
+
+
