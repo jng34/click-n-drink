@@ -12,19 +12,21 @@ h2 {
 
 
 #emoji img{
-    /* background-color: rgb(255, 255, 255); */
-    padding: 100px 30px 200px 30px;
-    margin: auto;
-    justify-content: center;
-    height: 200px;
-
+    height: 100px;
+    padding-left: 30px ;
+    padding-right: 30px;
+    cursor: pointer;
 }
+
+ #emoji img:hover{
+   
+    height: 15em;
+ }
 
 #emoji {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+    width: 100%;
+    text-align: center;
 }
 #cocktail{
     /* background-color: rgb(48, 54, 40); */
