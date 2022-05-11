@@ -1,3 +1,18 @@
+//Welcome Prompt
+function welcome() {
+    let greetings = prompt('Are you 21 or older?');
+    if (greetings == 'yes') {
+        alert('Welcome! Please continue.');
+    } else if (greetings == 'no') {
+        alert('Get outta here or we\'ll tell your mom!');
+    } else {
+        alert('Please type "yes" or "no".')
+    }
+}
+welcome();
+
+
+
 //Div tags
 const emojiDiv = document.querySelector('#emoji');
 const cocktailDiv = document.querySelector('#cocktail');
@@ -133,4 +148,11 @@ function getDrinks(data) {
 
 }
 
-
+document.addEventListener('keydown', (e)=>{
+    if (e.key === 'ArrowUp') {
+        alert('You have great taste! Cheers!');
+    }
+    if (e.key === 'ArrowDown') {
+        alert('Finish your drink and get something else.');
+    }
+}) 
