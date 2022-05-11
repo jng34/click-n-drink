@@ -45,7 +45,7 @@ function clickEmojis() {
     happy.addEventListener('click', () => {
         cocktailDiv.innerHTML = '';
         fetchMojitos();
-        happyEmoji.setAttribute('class', 'hidden');
+        // happyEmoji.setAttribute('class', 'hidden');
         feedEmojiDiv.append(happyEmoji);
         
     });
