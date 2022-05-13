@@ -1,15 +1,21 @@
+body {
+  background: linear-gradient(to left, #FFFFFF,skyblue);
+  width: auto;
+  height: 100%;
+}
+
 h1 {
     color: rgb(28, 23, 34);
     text-align: center;
     line-height: 1em;
-    font: 80px Arial, sans-serif;
+    font: 80px Comic Sans MS;
+    font-weight: bold;
 }
 
 h2 {
     text-align: center;
-    font: 30px Arial;
+    font: 40px Comic Sans MS;
 }
-
 
 #emoji img{
     height: 100px;
@@ -47,9 +53,8 @@ h2 {
     margin-right: 0;
 }
 
-#description{
-    /* background-color: rgb(48, 54, 40); */
-    padding: 100px 50px 100px 50px;
+#description {
+    padding: 150px 50px 100px 50px;
     text-align: center;
     display: center;
     font: 35px Arial, sans-serif;
@@ -59,7 +64,6 @@ h2 {
 #description img {
     display: center;
     height: 275px;
-    margin
 }
 
 .hidden {
@@ -70,27 +74,21 @@ h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background: #eee;
     margin: 10px auto;
     position: relative;
     text-align:center;
 }
 
 .align {
-    background: green;
     height: 400px;
     width: 300px;
-    margin: 25px;
-    /* display: inline-block;
-    padding: 50px 50px 50px 50px; */
-    /* background-color: rgb(48, 54, 40); */
+    margin: 15px;
 }
 
 img {
   height: 300px;
 }
 
-/*added new div tag*/
 #dragndrop {
   padding: 100px 20px 100px 20px;
 }
@@ -103,8 +101,9 @@ img {
 #feed-emoji {
   display: center;
   text-align: center;
-  padding: 100px 50px 100px 50px;
+  padding: 100px 20px 100px 20px; 
 }
+
 
 #feed-emoji img {
   display: center;
@@ -114,9 +113,3 @@ img {
 #drink {
   cursor: grab;
 }
-
-/* #ecstatic {
-  display: center;
-  text-align: center;
-  height: 300px;
-} */
