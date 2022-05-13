@@ -1,7 +1,8 @@
 body {
-  background: linear-gradient(to left, #FFFFFF,skyblue);
+  background: linear-gradient(to bottom left, #FFFFFF,skyblue);
   width: auto;
   height: 100%;
+  background-attachment: fixed;
 }
 
 h1 {
