@@ -15,8 +15,6 @@ function welcome() {
 
 welcome();
 
-
-
 function clickNDrink() {
 
     //Div tags
@@ -32,105 +30,73 @@ function clickNDrink() {
     const sad = document.getElementById('sad');
     const smirk = document.getElementById('smirk');
     
+    //Emoji array
+    const feelings = [happy, party, angry, sad, smirk]
+    const states = ["happiness", "sadness", "anger", "partayy", "smirky"];
 
     //Emoji images
     let happyEmoji = document.createElement('img');
-    happyEmoji.id = 'happiness';
-    happyEmoji.setAttribute('class', 'hidden');
-    happyEmoji.style.cssText = 'margin-left: 69px;';
-    happyEmoji.src = "emojis/Happy Emoji.png";
-
     let partyEmoji = document.createElement('img');
-    partyEmoji.id = 'partayy';
-    partyEmoji.setAttribute('class', 'hidden');
-    partyEmoji.style.cssText = 'margin-left: 69px;';
-    partyEmoji.src = "emojis/Party Face Emoji.png";
-    
     let angryEmoji = document.createElement('img');
-    angryEmoji.id = 'anger';
-    angryEmoji.setAttribute('class', 'hidden');
-    angryEmoji.style.cssText = 'margin-left: 69px;';
-    angryEmoji.src = "emojis/Very Angry Emoji.png";
-
     let sadEmoji = document.createElement('img');
-    sadEmoji.id = 'sadness';
-    sadEmoji.setAttribute('class', 'hidden');
-    sadEmoji.style.cssText = 'margin-left: 69px;';
-    sadEmoji.src = "emojis/Very Sad Emoji.png";
-
     let smirkEmoji = document.createElement('img');
-    smirkEmoji.id = 'smirky';
-    smirkEmoji.setAttribute('class', 'hidden');
-    smirkEmoji.style.cssText = 'margin-left: 69px;';
-    smirkEmoji.src = "emojis/Smirk Face Emoji.png";
+
+    const emojiImages = [happyEmoji, sadEmoji, angryEmoji, partyEmoji, smirkEmoji];
+    const emojiImgURLs = [
+        "emojis/Happy Emoji.png", 
+        "emojis/Very Sad Emoji.png",
+        "emojis/Very Angry Emoji.png",
+        "emojis/Party Face Emoji.png",
+        "emojis/Smirk Face Emoji.png"
+    ]
     
+    //Set up hidden emojis upon hover
+    for (let i=0; i<emojiImages.length; i++) {
+        emojiImages[i].id = states[i];
+        emojiImages[i].setAttribute('class', 'hidden');
+        emojiImages[i].style.cssText = 'margin-left: 69px;';
+        emojiImages[i].src = emojiImgURLs[i]
+    }
+
     //Text for picking a drink
     let pickADrink = document.createElement('p');
     pickADrink.innerText = 'Drink recommendations just for you: (choose one)';
     pickADrink.style.cssText = 'text-align = center; font: 30px Comic Sans MS; font-weight: bold';
-    
 
     function clearHTML() {
         cocktailDiv.innerHTML = '';
         detailDiv.innerHTML = '';
         feedEmojiDiv.innerHTML = '';
         dragAcross.className = 'hidden';
-        happyEmoji.setAttribute('class', 'hidden');
-        partyEmoji.setAttribute('class', 'hidden');
-        angryEmoji.setAttribute('class', 'hidden');
-        sadEmoji.setAttribute('class', 'hidden');
-        smirkEmoji.setAttribute('class', 'hidden');
+        for (let img of emojiImages) {
+            img.setAttribute('class', 'hidden')
+        }
     };
 
 
     //Click Event
     function clickEmojis() {
-        
+ 
+        const fetchFunctionsArr = [
+                fetchMojitos, 
+                fetchMojitos, 
+                fetchLongIslands, 
+                fetchMartinis, 
+                fetchMargaritas
+        ];
+    
+        for (let i=0; i<5; i++) {
 
-        happy.addEventListener('click', () => {
-            
-            clearHTML();
-            fetchMojitos();
-            cocktailDiv.append(pickADrink);
-            feedEmojiDiv.append(happyEmoji);
-            
-        });
-        party.addEventListener('click', () => {
-            
-            clearHTML();
-            fetchLongIslands();
-            cocktailDiv.append(pickADrink);
-            feedEmojiDiv.append(partyEmoji);
-
-        });
-        angry.addEventListener('click', () => {
-            
-            clearHTML();
-            fetchMartinis();
-            cocktailDiv.append(pickADrink);
-            feedEmojiDiv.append(angryEmoji);
-
-        });
-        sad.addEventListener('click', () => {
-            
-            clearHTML();
-            fetchDaiquiris();
-            cocktailDiv.append(pickADrink);
-            feedEmojiDiv.append(sadEmoji);
-
-        });
-        smirk.addEventListener('click', () => {
-            
-            clearHTML();
-            fetchMargaritas();
-            cocktailDiv.append(pickADrink);
-            feedEmojiDiv.append(smirkEmoji);
-
-        });
+            feelings[i].addEventListener('click', () => {
+                clearHTML();
+                fetchFunctionsArr[i]();
+                cocktailDiv.append(pickADrink);
+                feedEmojiDiv.append(emojiImages[i]);
+            });
+        }
     }
     
     clickEmojis();
-    
     
     //fetch mojitos
     function fetchMojitos() {
@@ -143,7 +109,6 @@ function clickNDrink() {
         })
     }
     
-    
     //fetch long island ice teas
     function fetchLongIslands() {
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Long')
@@ -154,7 +119,6 @@ function clickNDrink() {
             getDrinksForEach(data);
         })
     }
-    
     
     //fetch martinis - smirk
     function fetchMartinis() {
@@ -168,7 +132,6 @@ function clickNDrink() {
         })
     }
     
-    
     //fetch daiquiris
     function fetchDaiquiris() {
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Daiquiri')
@@ -180,7 +143,6 @@ function clickNDrink() {
             getDrinksForEach(data);
         })
     }
-    
     
     //fetch margaritas
     function fetchMargaritas() {
@@ -194,14 +156,11 @@ function clickNDrink() {
         })
     }
     
-    
     let mood = document.createElement('p');
     mood.innerText = 'This is you right now: \n (hover below)' ;
     mood.style.cssText = 'font: 35px Comic Sans MS; text-align: center; font-weight: bold; margin-top: 0px; width: 400px;'
     
-
     //Add drink images with forEach method
-    
     function getDrinksForEach(data) {
     
         data.drinks.forEach( (item) => {
@@ -210,8 +169,7 @@ function clickNDrink() {
             drinkImg.src = item.strDrinkThumb;
             cocktailDiv.append(drinkImg);
             
-            drinkImg.addEventListener('click', (e) => {
-                
+            drinkImg.addEventListener('click', (e) => { 
                 detailDiv.innerHTML = ''; //this clears all stuff in description
                 
                 feedEmojiDiv.prepend(mood);
@@ -232,24 +190,18 @@ function clickNDrink() {
 
                 //mouseover event listener
                 feedEmojiDiv.addEventListener('mouseover', onMouseOver);
-
             });
-
         })
     };
 
     //reveals hidden emojis
 
     function onMouseOver() {
-        happyEmoji.className = '';
-        angryEmoji.className = '';
-        partyEmoji.className = '';
-        sadEmoji.className = '';
-        smirkEmoji.className = '';
-        dragAcross.className = '';
+        const emojiArr = [...emojiImages, dragAcross]
+        for (let emoji of emojiArr) {
+            emoji.className = '';
+        }
     }
-
-
 
     const dragNdrop = document.getElementById('dragndrop');
     let dragAcross = document.createElement('p');
@@ -311,123 +263,46 @@ function clickNDrink() {
       
         }, false);
     
+
         document.addEventListener("dragleave", function(e) {
             // reset background of potential drop target when the draggable element leaves it
-            if (e.target.id == "happiness" ) {
-                e.target.style.background = "";
-            } else if ( e.target.id == "sadness" ) {
-                e.target.style.background = "";
-            } else if ( e.target.id == "anger" ) {
-                e.target.style.background = "";
-            } else if ( e.target.id == "partayy" ) {
-                e.target.style.background = "";
-            } else if ( e.target.id == "smirky" ) {
-                e.target.style.background = "";
+            for (let state of states) {
+                if (e.target.id == state) {
+                    e.target.style.background = "";
+                }
             }
-      
         }, false);
     
         document.addEventListener("drop", function(e) {
             // prevent default action (open as link for some elements)
             e.preventDefault();
             // move dragged elem to the selected drop target
-            if ( e.target.id == "happiness" ) {
-                
-                // detailDiv.innerHTML = '';
-                // feedEmojiDiv.innerHTML = '';
-                // dragNdrop.style.padding = '50px 50px 50px 50px';
-                detailDiv.remove();
-                feedEmojiDiv.remove();
-                dragNdrop.style.padding = '50px 200px 50px 200px';
-                
-                dragAcross.innerText = 'Chugging.....';
-                document.body.style.cursor = 'progress';
-                setTimeout( () => {
-                    dragAcross.hidden = true;
-                    finalMsg.className = '';
-                    ecstaticEmoji.className = '';
-                    document.body.style.cursor = '';
-                    dragNdrop.style.cssText = 'margin-right: 200px;';
-                }, 2000);
+            for (let state of states) {
+                if (e.target.id == state) {
+                    detailDiv.remove();
+                    feedEmojiDiv.remove();
+                    dragNdrop.style.padding = '50px 200px 50px 200px';
 
-
-            } else if ( e.target.id == "sadness" ) {
-                
-                detailDiv.remove();
-                feedEmojiDiv.remove();
-                dragNdrop.style.padding = '50px 200px 50px 200px';
-
-                dragAcross.innerText = 'Chugging.....';
-                document.body.style.cursor = 'progress';
-                setTimeout( () => {
-                    dragAcross.hidden = true;
-                    finalMsg.className = '';
-                    ecstaticEmoji.className = '';
-                    document.body.style.cursor = '';
-                    dragNdrop.style.cssText = 'margin-right: 200px;';
-                }, 2000);
-                
-            } else if ( e.target.id == "anger" ) {
-                
-                detailDiv.remove();
-                feedEmojiDiv.remove();
-                dragNdrop.style.padding = '50px 200px 50px 200px';
-
-                dragAcross.innerText = 'Chugging.....';
-                document.body.style.cursor = 'progress';
-                setTimeout( () => {
-                    dragAcross.hidden = true;
-                    finalMsg.className = '';
-                    ecstaticEmoji.className = '';
-                    document.body.style.cursor = '';
-                    dragNdrop.style.cssText = 'margin-right: 200px;';
-                }, 2000);
-                
-            } else if ( e.target.id == "smirky" ) {
-                
-                detailDiv.remove();
-                feedEmojiDiv.remove();
-                dragNdrop.style.padding = '50px 200px 50px 200px';
-
-                dragAcross.innerText = 'Chugging.....';
-                document.body.style.cursor = 'progress';
-                setTimeout( () => {
-                    dragAcross.hidden = true;
-                    finalMsg.className = '';
-                    ecstaticEmoji.className = '';
-                    document.body.style.cursor = '';
-                    dragNdrop.style.cssText = 'margin-right: 200px;';
-                }, 2000);
-                
-            } else if ( e.target.id == "partayy" ) {
-                
-                detailDiv.remove();
-                feedEmojiDiv.remove();
-                dragNdrop.style.padding = '50px 200px 50px 200px';
-                
-                dragAcross.innerText = 'Chugging.....';
-                document.body.style.cursor = 'progress';
-                setTimeout( () => {
-                    dragAcross.hidden = true;
-                    finalMsg.className = '';
-                    ecstaticEmoji.className = '';
-                    document.body.style.cursor = '';
-                    dragNdrop.style.cssText = 'margin-right: 200px;';
-                }, 2000);
-                
+                    dragAcross.innerText = 'Chugging.....';
+                    document.body.style.cursor = 'progress';
+                    setTimeout( () => {
+                        dragAcross.hidden = true;
+                        finalMsg.className = '';
+                        ecstaticEmoji.className = '';
+                        document.body.style.cursor = '';
+                        dragNdrop.style.cssText = 'margin-right: 200px;';
+                    }, 2000);
+                }
             }
+
         }, false);
-
     }
-           
     feedDrinkDragNDrop();
-
 }
 
 clickNDrink();
 
 function getOut() {
-
     document.body.innerHTML = '';
 
     let div = document.createElement('div');
@@ -441,5 +316,4 @@ function getOut() {
     div.append(scolding);
     div.style.cssText = 'text-align: center; padding-top: 125px;';
     document.body.append(div, msg);
-
 }
