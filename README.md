@@ -1,4 +1,4 @@
-# phase1-group-project
+# Click N' Drink
 
 Pitch/Read-me: Group6 (Ignacio, James, Yax) 
 
